@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import Usuario from './componentes/Usuario';
+import FormularioInicioSesion from './componentes/FormularioInicioSesion';
 
 
 const App = () => {
@@ -16,7 +17,10 @@ const App = () => {
   :
   <div>
    <p>No has iniciado sesion</p>
-   <button onClick={() => cambiarEstadoSesion(true)}>Cerrar Sesión</button>
+   <FormularioInicioSesion/>
+  {/*
+   <button onClick={() => cambiarEstadoSesion(true)}>Iniciar Sesión</button>*/
+  }
     </div>
 }
 </>
