@@ -1,25 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import Usuario from './componentes/Usuario';
 
 
-
-const sesion = true;
-
-
 const App = () => {
+  const [sesion, cambiarEstadoSesion] = useState(true);
+
   return (
   <>
   {sesion === true ? 
-  <>
+  <div>
 <Usuario/>
-<Usuario/>
-<Usuario/>
-    </>
+<button onClick={() => cambiarEstadoSesion(false)}>Cerrar Sesión</button>
+    </div>
   :
-   <p>No has iniciado sesion</p>}
-
-    </>
+  <div>
+   <p>No has iniciado sesion</p>
+   <button onClick={() => cambiarEstadoSesion(true)}>Cerrar Sesión</button>
+    </div>
+}
+</>
 );
 }
 
