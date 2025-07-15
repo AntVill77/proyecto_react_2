@@ -1,5 +1,5 @@
 import React from 'react';
-import {TituloAzul, TituloRojo} from './Titulo';
+import {Titulo} from './Titulo';
 
 const Usuario = () => {
 
@@ -8,8 +8,8 @@ const amigos = ['Alex', 'Manuel', 'César'];
 
   return(
      <div>
-        <TituloAzul/>
-        <TituloRojo/>
+        <Titulo usuario = "Ant"/>
+        <Titulo usuario = "Manuel" color = "blue"/>
     <p>Que tenga un buen día</p>
     {pais && <p>Tú eres de: {pais}</p>}
     <ul>
