@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-const  FormularioInicioSesion = () => {
-
+const  FormularioInicioSesion = (props) => {
+    console.log(props);
     const[usuario, cambiarUsuario] = useState('');
     const[password, cambiarPassword] = useState('');
 
-    const onChangeUsuario = (evento) => {
+   /* const onChangeUsuario = (evento) => {
         //console.log(evento);
         cambiarUsuario(evento.target.value);
     }
@@ -13,12 +13,32 @@ const  FormularioInicioSesion = () => {
      const onChangePassword = (evento) => {
         //console.log(evento);
         cambiarPassword(evento.target.value);
+    }*/
+
+    const onChange = (evento) => {
+        if(evento.target.name === 'usuario'){
+            cambiarUsuario(evento.target.value);
+        }else if (evento.target.value){
+            cambiarPassword(evento.target.value);
+        }
+    }
+
+    const onSubmit = (evento)=>{
+        evento.preventDefault();
+        if(usuario === 'carlos' && password === '123'){
+           props.cambiarEstadoSesion(true);
+
+        }else{
+            alert('datos incorrectos')
+            cambiarUsuario('');
+            cambiarPassword('');
+
+        }
     }
 
     return ( 
-        <form action="">
-            <p>Usuario: {usuario} </p>
-            <p>Contraseña: {password} </p>
+        <form action="" onSubmit={onSubmit}>
+    
             <div>
                 <label htmlFor = "usuario">Usuario</label>
                 <input 
@@ -26,8 +46,9 @@ const  FormularioInicioSesion = () => {
                     name= "usuario" 
                     id="usuario"
                     value={usuario}
-                    onChange={onChangeUsuario}
+                    onChange={onChange}
                     />
+        
             </div>
             <div>
                 <label htmlFor = "password">Contraseña</label>
@@ -36,7 +57,7 @@ const  FormularioInicioSesion = () => {
                     name= "password" 
                     id="password"
                     value={password}
-                    onChange={onChangePassword}
+                    onChange={onChange}
                     />
             </div>
             <button type="submit">Iniciar Sesion</button>
